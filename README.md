@@ -1,4 +1,6 @@
-# marvel-game
+# Marvel Game
+
+Current Progress can be seen here, but it's only in alpha - http://baskey.co/marvel-game/
 
 Using the Marvel API, I'm working on creating a simple Marvel card game as a background project and to develop my JavaScript skills.
 
