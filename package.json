@@ -1,0 +1,20 @@
+{
+  "name": "baskey-boiler-build",
+  "version": "1.0.0",
+  "description": "Startup Build for checking, minifying html, css, sass and js",
+  "Private": true,
+  "dependencies": {
+    "gulp": "3.9.1",
+    "gulp-sass": "3.1.0",
+    "browser-sync": "2.18.13",
+    "gulp-jshint": "2.0.4",
+    "jshint": "2.9.5",
+    "gulp-uglify": "3.0.0",
+    "gulp-rename": "1.2.2",
+    "gulp-htmlmin": "3.0.0",
+    "gulp-concat" : "*"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}

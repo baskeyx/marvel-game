@@ -1,0 +1,103 @@
+html {
+  background: url("../img/hero-bg.jpg") top right no-repeat fixed;
+  background-size: cover;
+  height: 100%;
+}
+
+.con {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #fff;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  padding: 20px 20px 50px;
+}
+
+p {
+  color: #fff;
+  padding: 0 20px;
+  font-weight: 100;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 13px;
+  text-align: center;
+}
+
+.packs .pack {
+  width: calc(23% - 2px);
+  margin: 20px 1%;
+  display: inline-block;
+  position: relative;
+  border: 1px solid #fff;
+  transform-style: preserve-3D;
+  cursor: pointer;
+
+  // &.disabled {
+  //   background: #000;
+  //   pointer-events: none;
+  //   opacity: 0;
+  //   transition: opacity 1s;
+  //
+  //   img {
+  //     opacity: 0.5;
+  //   }
+  // }
+
+  &.selected {
+    transform: rotateY(180deg);
+    transition: 1s transform 2s;
+  }
+
+  img {
+    width: 100%;
+    display: block;
+  }
+
+  .pack-reverse {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transform: rotateY(180deg);
+    top: 0;
+    left: 0;
+  }
+
+  h2 {
+    margin: 0 auto;
+    width: 96%;
+    text-align: center;
+    bottom: 0;
+    color: #fff;
+    font-family: Lato;
+    font-weight: 200;
+    font-size: 13px;
+    letter-spacing: 1px;
+    padding: 10px 2%;
+    text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.8);
+    position: absolute;
+  }
+}
+
+.selected-pack .packs .pack{
+  display:none;
+}
+
+.selected-pack .packs .pack.selected{
+  display:block;
+  margin:20px auto;
+}
+@media only screen and (max-width:667px) {
+  p {
+    text-align: left;
+  }
+
+  .packs .pack {
+    width: calc(30% - 2px);
+    margin: 10px 2%;
+  }
+}
