@@ -32,26 +32,12 @@ p {
   margin: 20px 1%;
   display: inline-block;
   position: relative;
-  border: 1px solid #fff;
-  transform-style: preserve-3D;
   cursor: pointer;
-
-  // &.disabled {
-  //   background: #000;
-  //   pointer-events: none;
-  //   opacity: 0;
-  //   transition: opacity 1s;
-  //
-  //   img {
-  //     opacity: 0.5;
-  //   }
-  // }
-
-  &.selected {
-    transform: rotateY(180deg);
-    transition: 1s transform 2s;
+  .card{
+    transform-style: preserve-3d;
+    transition: 2s transform 1s;
+    border: 1px solid #fff;
   }
-
   img {
     width: 100%;
     display: block;
@@ -83,14 +69,36 @@ p {
   }
 }
 
-.selected-pack .packs .pack{
+.selected-pack.packs .pack{
   display:none;
 }
 
-.selected-pack .packs .pack.selected{
+.selected-pack.packs .pack.selected{
   display:block;
   margin:20px auto;
 }
+
+.container {
+  width: 200px;
+  height: 260px;
+  position: relative;
+  perspective: 800px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  div{
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+}
+
+.selected .card{
+  transform: rotateY( 180deg );
+  transform-style: preserve-3d;
+}
+
 @media only screen and (max-width:667px) {
   p {
     text-align: left;

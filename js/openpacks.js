@@ -96,20 +96,14 @@ function fetchJSONFile(path, callback) {
 var domPacks = document.querySelectorAll(".pack");
 for (k=0;k<domPacks.length;k++){
   domPacks[k].addEventListener("click", function(){
-    console.log("hi");
     if (this.className.indexOf("selected")<0){
       this.classList.add("selected");
       var selectedPack = this.dataset.pack;
-      for (j=0;j<domPacks.length;j++){
-        domPacks[j].classList.add("disabled");
-        document.querySelector("." + selectedPack).classList.remove("disabled");
-        document.querySelector("html").classList.add("selected-pack");
-      }
+      document.querySelector(".packs").classList.add("selected-pack");
       randomCard();
       item = characters[Math.floor(Math.random() * characters.length)];
       fetchJSONFile("https://gateway.marvel.com:443/v1/public/characters/" + item + "?apikey=" + apiKey, function(data){
         var character = data.data.results[0];
-        console.log(character);
         document.querySelector("." + selectedPack + " .pack-reverse").innerHTML = "<h2>" + character.name + "</h2>" +
         "<img src='" + character.thumbnail.path + "/portrait_uncanny." + character.thumbnail.extension + "' alt='" + character.name + "'/>";
       });
