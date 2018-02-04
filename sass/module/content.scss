@@ -26,79 +26,6 @@ p {
   font-size: 13px;
   text-align: center;
 }
-
-.packs .pack {
-  width: calc(23% - 2px);
-  margin: 20px 1%;
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-  // .card{
-  //   transform-style: preserve-3d;
-  //   transition: transform 1s;
-  //   border: 1px solid #fff;
-  // }
-  img {
-    width: 100%;
-    display: block;
-  }
-
-  .pack-reverse {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    transform: rotateY(180deg);
-    transition: transform 1s;
-    top: 0;
-    left: 0;
-  }
-
-  h2 {
-    margin: 0 auto;
-    width: 96%;
-    text-align: center;
-    bottom: 0;
-    color: #fff;
-    font-family: Lato;
-    font-weight: 200;
-    font-size: 13px;
-    letter-spacing: 1px;
-    padding: 10px 2%;
-    text-transform: uppercase;
-    background: rgba(0, 0, 0, 0.8);
-    position: absolute;
-  }
-}
-
-.selected-pack.packs .pack{
-  display:none;
-}
-
-.selected-pack.packs .pack.selected{
-  display:block;
-  margin:20px auto;
-}
-
-.container {
-  width: 200px;
-  height: 260px;
-  position: relative;
-  perspective: 800px;
-}
-
-// .card {
-//   width: 100%;
-//   height: 100%;
-//   div{
-//     backface-visibility: hidden;
-//     -webkit-backface-visibility: hidden;
-//   }
-// }
-
-.selected .card{
-  transform: rotateY( 180deg );
-}
-
 @media only screen and (max-width:667px) {
   p {
     text-align: left;
@@ -111,34 +38,68 @@ p {
 }
 
 .container {
-  width: 200px;
-  height: 260px;
+  width: calc(23% - 2px);
+  margin: 20px 1%;
+  display: inline-block;
   position: relative;
-  perspective: 800px;
 }
-#card {
+
+.card {
   width: 100%;
   height: 100%;
-  position: absolute;
   transform-style: preserve-3d;
-  transition: transform 1s;
+  transition: 2s transform 1s;
+  border: 1px solid #fff;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    display: block;
+  }
+
+  figure {
+    margin: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .back {
+    transform: rotateY(180deg);
+    position: absolute;
+    top: 0;
+
+    h2 {
+      margin: 0 auto;
+      width: 96%;
+      text-align: center;
+      bottom: 0;
+      color: #fff;
+      font-family: Lato;
+      font-weight: 200;
+      font-size: 13px;
+      letter-spacing: 1px;
+      padding: 10px 2%;
+      text-transform: uppercase;
+      background: rgba(0, 0, 0, 0.8);
+      position: absolute;
+    }
+  }
 }
-#card figure {
-  margin: 0;
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+
+.selected-pack {
+  .container {
+    pointer-events: none;
+    display:none;
+    &.selected{
+      display:block;
+      margin:20px auto;
+    }
+  }
 }
-#card .front {
-  background: red;
-}
-#card .back {
-  background: blue;
-  transform: rotateY( 180deg );
-}
-.selected-pack #card {
+
+.reveal .selected .card {
   transform: rotateY( 180deg );
 }

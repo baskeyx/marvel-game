@@ -93,7 +93,7 @@ function fetchJSONFile(path, callback) {
     httpRequest.send();
 }
 
-var domPacks = document.querySelectorAll(".pack");
+var domPacks = document.querySelectorAll(".container");
 for (k=0;k<domPacks.length;k++){
   domPacks[k].addEventListener("click", function(){
     if (this.className.indexOf("selected")<0){
@@ -104,9 +104,11 @@ for (k=0;k<domPacks.length;k++){
       item = characters[Math.floor(Math.random() * characters.length)];
       fetchJSONFile("https://gateway.marvel.com:443/v1/public/characters/" + item + "?apikey=" + apiKey, function(data){
         var character = data.data.results[0];
-        document.querySelector("." + selectedPack + " .pack-reverse").innerHTML = "<h2>" + character.name + "</h2>" +
+        document.querySelector("." + selectedPack + " .back").innerHTML = "<h2>" + character.name + "</h2>" +
         "<img src='" + character.thumbnail.path + "/portrait_uncanny." + character.thumbnail.extension + "' alt='" + character.name + "'/>";
       });
+      setTimeout(function(){ document.querySelector(".packs").classList.add("reveal");  }, 500);
+
     }
   });
 }
