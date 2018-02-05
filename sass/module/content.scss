@@ -11,7 +11,7 @@ html {
 
 h1 {
   color: #fff;
-  font-weight: 200;
+  font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 5px;
   padding: 20px 20px 50px;
@@ -25,16 +25,6 @@ p {
   text-transform: uppercase;
   font-size: 13px;
   text-align: center;
-}
-@media only screen and (max-width:667px) {
-  p {
-    text-align: left;
-  }
-
-  .packs .pack {
-    width: calc(30% - 2px);
-    margin: 10px 2%;
-  }
 }
 
 .container {
@@ -102,4 +92,29 @@ p {
 
 .reveal .selected .card {
   transform: rotateY( 180deg );
+}
+
+
+@media only screen and (max-width:667px) {
+  p {
+    text-align: left;
+  }
+
+  .container {
+    width: 42%;
+    margin: 10px 4%;
+  }
+}
+
+@media only screen and (max-width: 375px){
+  .container {
+    width: 88%;
+    margin: 20px 6%;
+  }
+  html{
+    background:#256f9a;
+  }
+  h1{
+    padding: 20px 20px 20px;
+  }
 }
