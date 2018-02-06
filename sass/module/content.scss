@@ -6,7 +6,7 @@ html {
 
 .con {
   max-width: 960px;
-  margin: 0 auto;
+  margin: 80px auto;
 }
 
 h1 {
@@ -14,7 +14,8 @@ h1 {
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 5px;
-  padding: 20px 20px 50px;
+  padding: 20px 20px 0 0;
+  font-size:20px;
 }
 
 p {
@@ -88,6 +89,9 @@ p {
       margin:20px auto;
     }
   }
+  .con p{
+    display: none;
+  }
 }
 
 .reveal .selected .card {
@@ -108,13 +112,13 @@ p {
 
 @media only screen and (max-width: 375px){
   .container {
-    width: 88%;
-    margin: 20px 6%;
+    width: 80%;
+    margin: 20px 10%;
   }
   html{
     background:#256f9a;
   }
   h1{
-    padding: 20px 20px 20px;
+    padding: 20px 0;
   }
 }
