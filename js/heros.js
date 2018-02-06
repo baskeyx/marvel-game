@@ -445,7 +445,7 @@ var hero = {
     },
     {
       "name": "Captain America",
-      "id": 1009228,
+      "id": 1009220,
       "stats": {
         "durability": 3,
         "energy": 1,
@@ -480,7 +480,7 @@ var hero = {
       }
     },
     {
-      "name": "Wolverine Ultimate",
+      "name": "Wolverine (Ultimate)",
       "id": 1011006,
       "stats": {
         "durability": 7,
@@ -492,7 +492,7 @@ var hero = {
       }
     },
     {
-      "name": "Spiderman Ultimate",
+      "name": "Spiderman (Ultimate)",
       "id": 1011010,
       "stats": {
         "durability": 3,
@@ -528,7 +528,7 @@ var hero = {
       }
     },
     {
-      "name": "Daredevil Ultimate",
+      "name": "Daredevil (Ultimate)",
       "id": 1010919,
       "stats": {
         "durability": 3,
