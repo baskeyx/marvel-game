@@ -12,11 +12,13 @@ Future
 3. The cards will get assigned with attributes from the Marvel Universe Powergrid (e.g: http://marvel.com/universe/Blade)
 4. The user will be able to take on Marvel villains (top trumps style) and receive XP
 5. User will be able to get additional cards:
-* +1 to random ability (single use/common)
-* +1 to 1 chosen ability (single use/rare) 
-* +1 to all abilities (single use/very rare) 
-* +1 to random ability (perm/extremely rare)
-* +1 to chosen ability (perm/ultra rare)
-* hero on loan
-* villain on loan
+⋅⋅* +1 to random ability (single use/common)
+⋅⋅* +1 to 1 chosen ability (single use/rare) 
+⋅⋅* +1 to all abilities (single use/very rare) 
+⋅⋅* +1 to random ability (perm/extremely rare)
+⋅⋅* +1 to chosen ability (perm/ultra rare)
+⋅⋅* hero on loan (2 games)
+⋅⋅* villain on loan (2 games)
+⋅⋅* hero on loan (5 games)
+⋅⋅* villain on loan (5 games)
 6. User will be able to trade their cards with friends.
