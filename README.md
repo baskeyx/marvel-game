@@ -17,6 +17,6 @@ Future
 * +1 to all abilities (single use/very rare) 
 * +1 to random ability (perm/extremely rare)
 * +1 to chosen ability (perm/ultra rare)
-* hero on loading
-* villain on loading
+* hero on loan
+* villain on loan
 6. User will be able to trade their cards with friends.
