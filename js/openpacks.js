@@ -72,25 +72,53 @@ var domPacks = document.querySelectorAll(".hub-packs .hub-card");
 for (var k = 0; k < domPacks.length; k++) {
   domPacks[k].addEventListener("click", function() {
     if (this.className.indexOf("disabled") < 0) {
-      for (var j = 0; j < domPacks.length; j++) {
-        domPacks[j].classList.add("disabled");
-      }
+      // for (var j = 0; j < domPacks.length; j++) {
+      //   domPacks[j].classList.add("disabled");
+      // }
       html.querySelector(".front").innerHTML = "<img src='" + this.querySelector("img").src + "'>";
       html.classList.add("selected-pack");
       characters = randomCard();
       item = characters[Math.floor(Math.random() * characters.length)];
       fetchJSONFile("https://gateway.marvel.com:443/v1/public/characters/" + item + "?apikey=" + apiKey, function(data) {
+
         var character = data.data.results[0];
-        html.querySelector(".back-card").innerHTML = "<h2>" + character.name + "</h2>" +
-          "<img src='" + character.thumbnail.path + "/portrait_uncanny." + character.thumbnail.extension + "' alt='" + character.name + "'/>";
+        var charName = character.name;
+        var charImg = character.thumbnail.path + "." + character.thumbnail.extension;
+        var charCardImg = character.thumbnail.path + "/portrait_uncanny." + character.thumbnail.extension;
+
+        html.querySelector(".back-card").innerHTML = "<h2>" + charName + "</h2>" +
+          "<img src='" + charCardImg + "' alt='" + charName + "'/>";
+
+        cardStats = hero.heros.filter(function( obj ) {
+          return obj.id == item;
+        });
+
+        // push card to user state
+
+        cardStats[0].name = charName;
+        cardStats[0].img = charImg;
+        cardStats[0].cardImg = charCardImg;
+
+        userState.cards.push(cardStats[0]);
+
+        // update hub with user cardStats
+        var hubCards = "";
+        for(i=0;i<userState.cards.length;i++){
+          hubCards += '<div class="hub-card"><img src="' + userState.cards[i].img + '" alt="'+userState.cards[i].name+'"></div>';
+        }
+
+        html.querySelector(".hub-cards").innerHTML = '<h2>Cards ('+ userState.cards.length +')</h2>' + hubCards;
+
+        html.querySelector(".hub-welcome p").innerHTML = "Nice, you've bagged yourself " + charName + "! The game is only in beta but check back soon as you'll be able to take part in challenges, earn adamantium coins (the best cryptocurrency) and trade, or take on friends!";
+
       });
+
       setTimeout(function() {
         html.querySelector(".container").classList.add("reveal");
         html.querySelector(".hub-section.hub-packs .no").innerHTML = "0";
-        heroStats = hero.heros.filter(function( obj ) {
-          return obj.id == item;
-        });
-        userState.cards.push(heroStats);
+
+
+
       }, 500);
     }
   });
@@ -99,4 +127,5 @@ for (var k = 0; k < domPacks.length; k++) {
 html.querySelector(".continue-cta").addEventListener("click", function(){
   html.classList.remove("selected-pack");
   html.classList.remove("intro-state");
+  html.querySelector(".container").classList.remove("reveal");
 });
