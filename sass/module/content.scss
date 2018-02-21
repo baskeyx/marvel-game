@@ -2,11 +2,14 @@ html {
   background: url("../img/hero-bg.jpg") top right no-repeat fixed;
   background-size: cover;
   height: 100%;
+  min-width:320px;
 }
 
 .con {
   max-width: 960px;
   margin: 80px auto;
+  position: fixed;
+  width: 100%;
 }
 
 h1 {
@@ -15,18 +18,19 @@ h1 {
   text-transform: uppercase;
   letter-spacing: 5px;
   padding: 20px 20px 0 0;
-  font-size:20px;
+  font-size: 20px;
 }
 
 p {
   color: #fff;
-  padding: 0 20px;
   font-weight: 300;
   letter-spacing: 1px;
   text-transform: uppercase;
   font-size: 13px;
   text-align: center;
 }
+
+// pack opening
 
 .container {
   width: calc(23% - 2px);
@@ -82,43 +86,39 @@ p {
 
 .selected-pack {
   .container {
-    pointer-events: none;
-    display:none;
-    &.selected{
-      display:block;
-      margin:20px auto;
+    &.selected {
+      display: block;
+      margin: 20px auto;
     }
   }
-  .con p{
+
+  .con p {
     display: none;
   }
 }
 
-.reveal .selected .card {
-  transform: rotateY( 180deg );
+.reveal .card {
+  transform: rotateY(180deg);
 }
 
+// overlay
 
-@media only screen and (max-width:667px) {
-  p {
-    text-align: left;
-  }
-
-  .container {
-    width: 42%;
-    margin: 10px 4%;
-  }
+.overlay{
+  display:none;
+  position:fixed;
+  height:100%;
+  width:100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  top:0;
 }
 
-@media only screen and (max-width: 375px){
+@media only screen and (max-width: 375px) {
   .container {
-    width: 80%;
-    margin: 20px 10%;
+    width: 70%;
+    margin: 0px 15%;
   }
-  html{
-    background:#256f9a;
-  }
-  h1{
+
+  h1 {
     padding: 20px 0;
   }
 }

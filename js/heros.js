@@ -22,6 +22,17 @@ var hero = {
         "speed": 2,
         "strength": 3
       }
+    },{
+      "name": "Falcon",
+      "id": 1009297,
+      "stats": {
+        "durability": 3,
+        "energy": 3,
+        "fighting": 5,
+        "intelligence": 3,
+        "speed": 4,
+        "strength": 3
+      }
     },
     {
       "name": "Storm",

@@ -12,7 +12,7 @@
     "gulp-uglify": "3.0.0",
     "gulp-rename": "1.2.2",
     "gulp-htmlmin": "3.0.0",
-    "gulp-concat" : "*"
+    "gulp-concat": "*"
   },
   "devDependencies": {
     "gulp": "^3.9.1"
