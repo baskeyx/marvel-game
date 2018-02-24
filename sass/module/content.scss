@@ -46,7 +46,7 @@ p {
   height: calc(100% - 80px);
   width: 100%;
   top: 0;
-  z-index:1;
+  z-index: 1;
 }
 
 .intro-state {
@@ -77,7 +77,7 @@ p {
   }
 }
 
-.score{
+.score {
   position: absolute;
   top: 0;
   left: 0;
@@ -85,26 +85,28 @@ p {
   height: 5px;
   background: rgba(255, 0, 0, 0.6);
   transition: width 1s linear;
+}
+
+.fight-wrapper {
+  &.points-1 .score {
+    width: 66%;
   }
 
-  .fight-wrapper{
-    &.points-1 .score{
-      width:66%;
-    }
-    &.points-2 .score{
-      width:33%;
-    }
-    &.points-3 .score{
-      width:0;
-    }
+  &.points-2 .score {
+    width: 33%;
   }
 
-  .instructions{
-    text-align: center;
-    margin: 10px;
-    font-size: 10px;
-    text-transform: uppercase;
+  &.points-3 .score {
+    width: 0;
   }
+}
+
+.instructions {
+  text-align: center;
+  margin: 10px;
+  font-size: 10px;
+  text-transform: uppercase;
+}
 
 .fight-wrapper {
   width: 70%;
@@ -126,9 +128,9 @@ p {
     text-indent: 6px;
     position: absolute;
     font-weight: 300;
-    top:0;
+    top: 0;
     text-transform: uppercase;
-    padding-top:4px;
+    padding-top: 4px;
   }
 
   img {

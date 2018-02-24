@@ -44,10 +44,9 @@
 // }
 
 .selected-pack .overlay,
-.selected-pack .overlay-bg{
-  display:block;
+.selected-pack .overlay-bg { 
+  display: block;
 }
-
 @media only screen and (min-width:415px) {
   .hub-wrapper .hub-section .hub-card {
     width: 22%;
@@ -57,12 +56,12 @@
       margin-right: 2%;
     }
 
-    &:nth-of-type(4n-1){
+    &:nth-of-type(4n-1) {
       margin-left: 2%;
     }
 
-    &:first-of-type{
-      margin-left:0;
+    &:first-of-type {
+      margin-left: 0;
     }
 
     &:nth-of-type(4n) {

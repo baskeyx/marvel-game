@@ -58,21 +58,21 @@ function randomCard() {
   return characters;
 }
 
-function buildCard(char,wrapper){
+function buildCard(char, wrapper) {
   markup = "";
   var img = "";
-  if (wrapper !== "villain"){
+  if (wrapper !== "villain") {
     img = char.img;
   }
-  for(var key in char.stats) {
+  for (var key in char.stats) {
     var value = char.stats[key];
     markup += "<div class='attrib " + key + "' data-val='" + key + "'><span>" + key + ": </span><span>" + value + "</span></div>";
   }
   markup = "<div class='stats-wrapper'>" + markup + "</div>";
   markup = "<div class='" + wrapper + "-wrapper fight-wrapper'>" +
-  "<img src='" + img + "' alt='" + char.name + "'>" +
-  "<h2>" + char.name + "</h2>" +
-  "<span class='score'></span>" + markup + "</div>";
+    "<img src='" + img + "' alt='" + char.name + "'>" +
+    "<h2>" + char.name + "</h2>" +
+    "<span class='score'></span>" + markup + "</div>";
   return markup;
 }
 
@@ -90,21 +90,21 @@ function fetchJSONFile(path, callback) {
   httpRequest.send();
 }
 
-function returnStats(heroId,heroType){
+function returnStats(heroId, heroType) {
 
-  for (i=0;i<heroType.length;i++){
-    if (heroType[i].id === heroId){
+  for (i = 0; i < heroType.length; i++) {
+    if (heroType[i].id === heroId) {
       return heroType[i];
     }
   }
 }
 
-function updateCardHub(charName){
+function updateCardHub(charName) {
   var hubCards = "";
-  for(i=0;i<userState.cards.length;i++){
-    hubCards += '<div class="hub-card"><img src="' + userState.cards[i].img + '" alt="'+userState.cards[i].name+'"></div>';
+  for (i = 0; i < userState.cards.length; i++) {
+    hubCards += '<div class="hub-card"><img src="' + userState.cards[i].img + '" alt="' + userState.cards[i].name + '"></div>';
   }
-  html.querySelector(".hub-cards").innerHTML = '<h2>Cards ('+ userState.cards.length +')</h2>' + hubCards;
+  html.querySelector(".hub-cards").innerHTML = '<h2>Cards (' + userState.cards.length + ')</h2>' + hubCards;
 
   // temp intro message
   html.querySelector(".hub-welcome p").innerHTML = "Nice, you've bagged yourself " + charName + "! The game is only in beta but check back soon as you'll be able to take part in challenges, earn adamantium coins (the best cryptocurrency) and trade, or take on friends!";
@@ -114,7 +114,7 @@ var domPacks = html.querySelectorAll(".hub-packs .hub-card");
 
 for (var k = 0; k < domPacks.length; k++) {
   domPacks[k].addEventListener("click", function() {
-    if (userState.currency >=5){
+    if (userState.currency >= 5) {
       html.querySelector(".front").innerHTML = "<img src='" + this.querySelector("img").src + "'>";
       html.classList.add("selected-pack");
       characters = randomCard();
@@ -129,7 +129,7 @@ for (var k = 0; k < domPacks.length; k++) {
         html.querySelector(".back-card").innerHTML = "<h2>" + charName + "</h2>" +
           "<img src='" + charCardImg + "' alt='" + charName + "'/>";
 
-        var cardStats = returnStats(item,hero.heros);
+        var cardStats = returnStats(item, hero.heros);
 
         cardStats.img = charImg;
         cardStats.cardImg = charCardImg;
@@ -147,7 +147,7 @@ for (var k = 0; k < domPacks.length; k++) {
   });
 }
 
-html.querySelector(".continue-cta").addEventListener("click", function(){
+html.querySelector(".continue-cta").addEventListener("click", function() {
   html.classList.remove("selected-pack");
   html.classList.remove("intro-state");
   html.querySelector(".container").classList.remove("reveal");
