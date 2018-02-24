@@ -1,4 +1,7 @@
+var userState = userState();
+var hero = loadHeros();
 var item = "";
+
 var veryCommon = [];
 var common = [];
 var uncommon = [];
@@ -7,6 +10,8 @@ var rare = [];
 var ultraRare = [];
 var characters = [];
 var html = document.getElementsByTagName("html")[0];
+
+var intro = 1;
 
 for (i = 0; i < hero.heros.length; i++) {
   var character = hero.heros[i];
@@ -53,6 +58,24 @@ function randomCard() {
   return characters;
 }
 
+function buildCard(char,wrapper){
+  markup = "";
+  var img = "";
+  if (wrapper !== "villain"){
+    img = char.img;
+  }
+  for(var key in char.stats) {
+    var value = char.stats[key];
+    markup += "<div class='attrib " + key + "' data-val='" + key + "'><span>" + key + ": </span><span>" + value + "</span></div>";
+  }
+  markup = "<div class='stats-wrapper'>" + markup + "</div>";
+  markup = "<div class='" + wrapper + "-wrapper fight-wrapper'>" +
+  "<img src='" + img + "' alt='" + char.name + "'>" +
+  "<h2>" + char.name + "</h2>" +
+  "<span class='score'></span>" + markup + "</div>";
+  return markup;
+}
+
 function fetchJSONFile(path, callback) {
   var httpRequest = new XMLHttpRequest();
   httpRequest.onreadystatechange = function() {
@@ -67,20 +90,37 @@ function fetchJSONFile(path, callback) {
   httpRequest.send();
 }
 
-// user selects a pack
-var domPacks = document.querySelectorAll(".hub-packs .hub-card");
+function returnStats(heroId,heroType){
+
+  for (i=0;i<heroType.length;i++){
+    if (heroType[i].id === heroId){
+      return heroType[i];
+    }
+  }
+}
+
+function updateCardHub(charName){
+  var hubCards = "";
+  for(i=0;i<userState.cards.length;i++){
+    hubCards += '<div class="hub-card"><img src="' + userState.cards[i].img + '" alt="'+userState.cards[i].name+'"></div>';
+  }
+  html.querySelector(".hub-cards").innerHTML = '<h2>Cards ('+ userState.cards.length +')</h2>' + hubCards;
+
+  // temp intro message
+  html.querySelector(".hub-welcome p").innerHTML = "Nice, you've bagged yourself " + charName + "! The game is only in beta but check back soon as you'll be able to take part in challenges, earn adamantium coins (the best cryptocurrency) and trade, or take on friends!";
+}
+
+var domPacks = html.querySelectorAll(".hub-packs .hub-card");
+
 for (var k = 0; k < domPacks.length; k++) {
   domPacks[k].addEventListener("click", function() {
-    if (this.className.indexOf("disabled") < 0) {
-      // for (var j = 0; j < domPacks.length; j++) {
-      //   domPacks[j].classList.add("disabled");
-      // }
+    if (userState.currency >=5){
       html.querySelector(".front").innerHTML = "<img src='" + this.querySelector("img").src + "'>";
       html.classList.add("selected-pack");
       characters = randomCard();
+      userState.currency -= 5;
       item = characters[Math.floor(Math.random() * characters.length)];
       fetchJSONFile("https://gateway.marvel.com:443/v1/public/characters/" + item + "?apikey=" + apiKey, function(data) {
-
         var character = data.data.results[0];
         var charName = character.name;
         var charImg = character.thumbnail.path + "." + character.thumbnail.extension;
@@ -89,36 +129,19 @@ for (var k = 0; k < domPacks.length; k++) {
         html.querySelector(".back-card").innerHTML = "<h2>" + charName + "</h2>" +
           "<img src='" + charCardImg + "' alt='" + charName + "'/>";
 
-        cardStats = hero.heros.filter(function( obj ) {
-          return obj.id == item;
-        });
+        var cardStats = returnStats(item,hero.heros);
 
-        // push card to user state
+        cardStats.img = charImg;
+        cardStats.cardImg = charCardImg;
 
-        cardStats[0].name = charName;
-        cardStats[0].img = charImg;
-        cardStats[0].cardImg = charCardImg;
+        userState.cards.push(cardStats);
 
-        userState.cards.push(cardStats[0]);
-
-        // update hub with user cardStats
-        var hubCards = "";
-        for(i=0;i<userState.cards.length;i++){
-          hubCards += '<div class="hub-card"><img src="' + userState.cards[i].img + '" alt="'+userState.cards[i].name+'"></div>';
-        }
-
-        html.querySelector(".hub-cards").innerHTML = '<h2>Cards ('+ userState.cards.length +')</h2>' + hubCards;
-
-        html.querySelector(".hub-welcome p").innerHTML = "Nice, you've bagged yourself " + charName + "! The game is only in beta but check back soon as you'll be able to take part in challenges, earn adamantium coins (the best cryptocurrency) and trade, or take on friends!";
+        updateCardHub(charName);
 
       });
-
       setTimeout(function() {
         html.querySelector(".container").classList.add("reveal");
         html.querySelector(".hub-section.hub-packs .no").innerHTML = "0";
-
-
-
       }, 500);
     }
   });
@@ -129,3 +152,5 @@ html.querySelector(".continue-cta").addEventListener("click", function(){
   html.classList.remove("intro-state");
   html.querySelector(".container").classList.remove("reveal");
 });
+
+fight();

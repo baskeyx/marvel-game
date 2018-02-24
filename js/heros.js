@@ -1,3 +1,4 @@
+function loadHeros(){
 var hero = {
   "heros": [{
       "name": "Hawkeye",
@@ -642,3 +643,5 @@ var hero = {
     }
   ]
 };
+return hero;
+}
