@@ -107,7 +107,7 @@ function updateCardHub(charName) {
   html.querySelector(".hub-cards").innerHTML = '<h2>Cards (' + userState.cards.length + ')</h2>' + hubCards;
 
   // temp intro message
-  html.querySelector(".hub-welcome p").innerHTML = "Nice, you've bagged yourself " + charName + "! The game is only in beta but check back soon as you'll be able to take part in challenges, earn adamantium coins (the best cryptocurrency) and trade, or take on friends!";
+  html.querySelector(".hub-welcome p").innerHTML = "Nice, you've bagged yourself " + charName + "! Why not try out the challenges section? The game is only in Beta but come back soon as you'll be able to earn adamantium coins (the best cryptocurrency) and trade, or take on friends!";
 }
 
 var domPacks = html.querySelectorAll(".hub-packs .hub-card");
@@ -137,6 +137,15 @@ for (var k = 0; k < domPacks.length; k++) {
         userState.cards.push(cardStats);
 
         updateCardHub(charName);
+
+        html.querySelector(".hub-cards .hub-card").addEventListener("click", function() {
+          var cardMarkup = buildCard(userState.cards[0], "hero");
+          html.querySelector(".overlay").innerHTML = cardMarkup + "<div class='close'>Close</div>";
+          html.classList.add("fight");
+          html.querySelector(".close").addEventListener("click", function(){
+            html.classList.remove("fight");
+          });
+        });
 
       });
       setTimeout(function() {

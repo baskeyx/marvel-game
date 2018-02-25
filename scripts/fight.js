@@ -171,6 +171,7 @@ function fight() {
       for (j = 0; j < html.querySelectorAll("." + key).length; j++) {
         html.querySelectorAll("." + key)[j].classList.add("done");
       }
+      
     }
 
     function instructions(message) {

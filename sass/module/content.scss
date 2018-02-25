@@ -49,6 +49,12 @@ p {
   z-index: 1;
 }
 
+.close {
+  text-align: center;
+  margin-top: 10px;
+  text-transform: uppercase;
+} 
+
 .intro-state {
   .hub-cards,
   .hub-challenges {
