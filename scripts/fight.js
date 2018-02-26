@@ -72,6 +72,61 @@ function fight() {
         "speed": 2,
         "strength": 4
       }
+    }, {
+      "name": "Nebula",
+      "id": 1010365,
+      "stats": {
+        "durability": 3,
+        "energy": 6,
+        "fighting": 4,
+        "intelligence": 4,
+        "speed": 2,
+        "strength": 4
+      }
+    }, {
+      "name": "Ronan",
+      "id": 1010344,
+      "stats": {
+        "durability": 7,
+        "energy": 7,
+        "fighting": 6,
+        "intelligence": 4,
+        "speed": 4,
+        "strength": 6
+      }
+    }, {
+      "name": "Magneto",
+      "id": 1009417,
+      "stats": {
+        "durability": 6,
+        "energy": 6,
+        "fighting": 3,
+        "intelligence": 6,
+        "speed": 4,
+        "strength": 2
+      }
+    },{
+      "name": "Juggernaut",
+      "id": 1009382,
+      "stats": {
+        "durability": 7,
+        "energy": 1,
+        "fighting": 3,
+        "intelligence": 2,
+        "speed": 4,
+        "strength": 7
+      }
+    },{
+      "name": "Ultron",
+      "id": 1009685,
+      "stats": {
+        "durability": 7,
+        "energy": 6,
+        "fighting": 4,
+        "intelligence": 4,
+        "speed": 2,
+        "strength": 6
+      }
     }]
   };
 
@@ -171,7 +226,7 @@ function fight() {
       for (j = 0; j < html.querySelectorAll("." + key).length; j++) {
         html.querySelectorAll("." + key)[j].classList.add("done");
       }
-      
+
     }
 
     function instructions(message) {

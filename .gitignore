@@ -1,3 +1,4 @@
 node_modules/
-script/apikey.js
+scripts/apikey.js
+js/
 dist/
