@@ -172,7 +172,7 @@ function fight() {
     html.classList.add("fight");
 
     // start fight
-
+    window.scrollTo(0, 0);
     var playerTurn = 0;
     var gameProgress = 1;
 
@@ -1071,6 +1071,7 @@ for (var k = 0; k < domPacks.length; k++) {
           var cardMarkup = buildCard(userState.cards[0], "hero");
           html.querySelector(".overlay").innerHTML = cardMarkup + "<div class='close'>Close</div>";
           html.classList.add("fight");
+          window.scrollTo(0, 0);
           html.querySelector(".close").addEventListener("click", function(){
             html.classList.remove("fight");
           });

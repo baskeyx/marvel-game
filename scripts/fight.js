@@ -153,7 +153,7 @@ function fight() {
     html.classList.add("fight");
 
     // start fight
-
+    window.scrollTo(0, 0);
     var playerTurn = 0;
     var gameProgress = 1;
 

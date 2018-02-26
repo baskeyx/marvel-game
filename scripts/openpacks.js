@@ -142,6 +142,7 @@ for (var k = 0; k < domPacks.length; k++) {
           var cardMarkup = buildCard(userState.cards[0], "hero");
           html.querySelector(".overlay").innerHTML = cardMarkup + "<div class='close'>Close</div>";
           html.classList.add("fight");
+          window.scrollTo(0, 0);
           html.querySelector(".close").addEventListener("click", function(){
             html.classList.remove("fight");
           });
