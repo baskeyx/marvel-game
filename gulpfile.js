@@ -30,6 +30,7 @@ gulp.task('concat', function () {
   gulp.src('scripts/*.js')
     .pipe(concat('script.js'))
     .pipe(gulp.dest('./js'))
+    .pipe(browserSync.stream({match: '**/*.js'}));
 });
 
 // minify JavaScript
