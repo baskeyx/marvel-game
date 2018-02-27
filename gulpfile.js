@@ -69,7 +69,7 @@ gulp.task('build', ['html', 'compress', 'move']);
 
 gulp.task('watch', function(){
 	gulp.watch('sass/**', ['sass']);
-  gulp.watch('js/**',['concat']);
+  gulp.watch('scripts/**',['concat']);
 });
 
 gulp.task('default', ['sass','concat','watch','browser-sync']);

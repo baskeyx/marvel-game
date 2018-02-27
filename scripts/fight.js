@@ -127,6 +127,94 @@ function fight() {
         "speed": 2,
         "strength": 6
       }
+    },{
+      "name": "Apocalypse",
+      "id": 1009156,
+      "stats": {
+        "durability": 6,
+        "energy": 7,
+        "fighting": 7,
+        "intelligence": 7,
+        "speed": 7,
+        "strength": 7
+      }
+    },{
+      "name": "Thanos",
+      "id": 1009652,
+      "stats": {
+        "durability": 7,
+        "energy": 7,
+        "fighting": 7,
+        "intelligence": 7,
+        "speed": 6,
+        "strength": 7
+      }
+    },{
+      "name": "Loki",
+      "id": 1009407,
+      "stats": {
+        "durability": 4,
+        "energy": 5,
+        "fighting": 2,
+        "intelligence": 4,
+        "speed": 3,
+        "strength": 5
+      }
+    },{
+      "name": "Bullseye",
+      "id": 1009212,
+      "stats": {
+        "durability": 2,
+        "energy": 1,
+        "fighting": 6,
+        "intelligence": 2,
+        "speed": 2,
+        "strength": 2
+      }
+    },{
+      "name": "Kingpin",
+      "id": 1009389,
+      "stats": {
+        "durability": 3,
+        "energy": 1,
+        "fighting": 5,
+        "intelligence": 4,
+        "speed": 2,
+        "strength": 3
+      }
+    },{
+      "name": "Dracula",
+      "id": 1010677,
+      "stats": {
+        "durability": 7,
+        "energy": 7,
+        "fighting": 7,
+        "intelligence": 7,
+        "speed": 7,
+        "strength": 7
+      }
+    },{
+      "name": "Doctor Doom",
+      "id": 1009281,
+      "stats": {
+        "durability": 6,
+        "energy": 6,
+        "fighting": 4,
+        "intelligence": 6,
+        "speed": 5,
+        "strength": 6
+      }
+    },{
+      "name": "Mephisto",
+      "id": 1009440,
+      "stats": {
+        "durability": 7,
+        "energy": 7,
+        "fighting": 7,
+        "intelligence": 6,
+        "speed": 7,
+        "strength": 7
+      }
     }]
   };
 
@@ -138,10 +226,16 @@ function fight() {
     var customVillain = Math.floor((Math.random() * villain.villains.length));
     villainId = villain.villains[customVillain].id;
 
+    // temp selection for time being
     heroStats = userState.cards[0];
 
-    var heroCard = buildCard(userState.cards[0], "hero");
+    // build new temp for fight
+    var tempHeroFight = buildTempObject(heroStats);
     var villainStats = returnStats(villainId, villain.villains);
+    var tempVillainFight = buildTempObject(villainStats);
+
+    var heroCard = buildCard(heroStats, "hero");
+
     fetchJSONFile("https://gateway.marvel.com:443/v1/public/characters/" + villainId + "?apikey=" + apiKey, function(data) {
       charImg = data.data.results[0].thumbnail.path + "." + data.data.results[0].thumbnail.extension;
       html.querySelector(".villain-wrapper img").src = charImg;
@@ -151,6 +245,7 @@ function fight() {
 
     html.querySelector(".overlay").innerHTML = heroCard + "<div class='instructions'></div>" + villainCard;
     html.classList.add("fight");
+
 
     // start fight
     window.scrollTo(0, 0);
@@ -173,21 +268,26 @@ function fight() {
       attributes[i].addEventListener("click", function() {
         if (gameProgress == 1) {
           if (playerTurn == 1) {
-            playerTurn = 0;
-            if (this.className.indexOf("done") < 0) {
-              var selected = this.dataset.val;
-              var h = heroStats.stats[selected];
-              var v = villainStats.stats[selected];
+            if (this.className.indexOf("done")===-1){
+              playerTurn = 0;
+              if (this.className.indexOf("done") < 0) {
+                var selected = this.dataset.val;
+                var h = tempHeroFight.stats[selected];
+                var v = tempVillainFight.stats[selected];
 
-              compareStats(h, v, selected);
-              cmptTurn();
+                compareStats(h, v, selected);
+                cmptTurn();
 
+              }
+            } else {
+              //console.log("you've already picked that bud");
             }
-          } else {
-            console.log("not your turn pal");
+          }
+          else{
+            //console.log("not your turn pal");
           }
         } else {
-          console.log("game's finished bro");
+          //console.log("game's finished bro");
         }
       });
     }
@@ -195,34 +295,40 @@ function fight() {
     function compareStats(h, v, key) {
       if (h > v) {
         pf++;
-        console.log(heroStats.name);
+        //console.log(tempHeroFight.name);
         html.querySelector(".hero-wrapper ." + key).classList.add("won");
         html.querySelector(".villain-wrapper ." + key).classList.add("lost");
         html.querySelector(".villain-wrapper").classList.add("points-" + pf);
       } else if (h < v) {
         pa++;
-        console.log(villainStats.name);
+        //console.log(tempVillainFight.name);
         html.querySelector(".villain-wrapper ." + key).classList.add("won");
         html.querySelector(".hero-wrapper ." + key).classList.add("lost");
         html.querySelector(".hero-wrapper").classList.add("points-" + pa);
       } else {
-        console.log("tie");
+        //console.log("tie");
       }
 
       t++;
 
       if (t === 6 || pf === 3 || pa === 3) {
         if (pf > pa) {
-          instructions(heroStats.name + " wins");
+          instructions(tempHeroFight.name + " wins");
         } else if (pf < pa) {
-          instructions(villainStats.name + " wins");
+          instructions(tempVillainFight.name + " wins");
         } else {
           instructions("it's a tie!");
         }
         gameProgress = 0;
+        setTimeout(function(){
+          html.classList.remove("fight");
+        },3000);
+        pf = 0;
+        pa = 0;
+        t = 0;
       }
-      delete heroStats.stats[key];
-      delete villainStats.stats[key];
+      delete tempHeroFight.stats[key];
+      delete tempVillainFight.stats[key];
       for (j = 0; j < html.querySelectorAll("." + key).length; j++) {
         html.querySelectorAll("." + key)[j].classList.add("done");
       }
@@ -239,14 +345,14 @@ function fight() {
         instructions("Computer Turn");
         var s = 0;
         var k = "";
-        for (var key in villainStats.stats) {
-          var value = villainStats.stats[key];
+        for (var key in tempVillainFight.stats) {
+          var value = tempVillainFight.stats[key];
           if (value > s) {
             s = value;
             k = key;
           }
         }
-        var h = heroStats.stats[k];
+        var h = tempHeroFight.stats[k];
         var v = s;
         setTimeout(function() {
           instructions("Your Turn");

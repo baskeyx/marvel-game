@@ -59,6 +59,7 @@ function randomCard() {
 }
 
 function buildCard(char, wrapper) {
+  // output card with stats
   markup = "";
   var img = "";
   if (wrapper !== "villain") {
@@ -77,6 +78,7 @@ function buildCard(char, wrapper) {
 }
 
 function fetchJSONFile(path, callback) {
+  // fetch json file and convert into js object
   var httpRequest = new XMLHttpRequest();
   httpRequest.onreadystatechange = function() {
     if (httpRequest.readyState === 4) {
@@ -90,16 +92,34 @@ function fetchJSONFile(path, callback) {
   httpRequest.send();
 }
 
-function returnStats(heroId, heroType) {
+function buildTempObject(charStarts){
+  // build a temporary object to store stats in
+  var tempObject = {};
+  tempObject.id = charStarts.id;
 
+  // not sure if name is needed here - get name from api call rather than entered
+  tempObject.name = charStarts.name;
+  tempObject.stats = {};
+
+  for (var key in charStarts.stats) {
+    var value = charStarts.stats[key];
+    tempObject.stats[key] = value;
+  }
+  return tempObject;
+}
+
+function returnStats(heroId, heroType) {
+  // return stats from internal js object
   for (i = 0; i < heroType.length; i++) {
     if (heroType[i].id === heroId) {
-      return heroType[i];
+      var tempBuild = buildTempObject(heroType[i]);
+      return tempBuild;
     }
   }
 }
 
 function updateCardHub(charName) {
+  // update card hub once a new card has been received
   var hubCards = "";
   for (i = 0; i < userState.cards.length; i++) {
     hubCards += '<div class="hub-card"><img src="' + userState.cards[i].img + '" alt="' + userState.cards[i].name + '"></div>';
@@ -114,6 +134,7 @@ var domPacks = html.querySelectorAll(".hub-packs .hub-card");
 
 for (var k = 0; k < domPacks.length; k++) {
   domPacks[k].addEventListener("click", function() {
+    window.scrollTo(0, 0);
     if (userState.currency >= 5) {
       html.querySelector(".front").innerHTML = "<img src='" + this.querySelector("img").src + "'>";
       html.classList.add("selected-pack");
@@ -121,6 +142,7 @@ for (var k = 0; k < domPacks.length; k++) {
       userState.currency -= 5;
       item = characters[Math.floor(Math.random() * characters.length)];
       fetchJSONFile("https://gateway.marvel.com:443/v1/public/characters/" + item + "?apikey=" + apiKey, function(data) {
+
         var character = data.data.results[0];
         var charName = character.name;
         var charImg = character.thumbnail.path + "." + character.thumbnail.extension;
@@ -133,7 +155,9 @@ for (var k = 0; k < domPacks.length; k++) {
 
         cardStats.img = charImg;
         cardStats.cardImg = charCardImg;
+        cardStats.name = character.name;
 
+        userState.cards = [];
         userState.cards.push(cardStats);
 
         updateCardHub(charName);
