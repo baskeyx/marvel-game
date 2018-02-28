@@ -215,6 +215,50 @@ function fight() {
         "speed": 7,
         "strength": 7
       }
+    },{
+      "name": "Moonstone",
+      "id": 1010362,
+      "stats": {
+        "durability": 4,
+        "energy": 5,
+        "fighting": 4,
+        "intelligence": 5,
+        "speed": 5,
+        "strength": 4
+      }
+    },{
+      "name": "Medusa",
+      "id": 1009438,
+      "stats": {
+        "durability": 4,
+        "energy": 1,
+        "fighting": 4,
+        "intelligence": 6,
+        "speed": 6,
+        "strength": 2
+      }
+    },{
+      "name": "Emma Frost",
+      "id": 1009310,
+      "stats": {
+        "durability": 7,
+        "energy": 7,
+        "fighting": 6,
+        "intelligence": 7,
+        "speed": 4,
+        "strength": 5
+      }
+    },{
+      "name": "Toxin",
+      "id": 1009692,
+      "stats": {
+        "durability": 5,
+        "energy": 1,
+        "fighting": 3,
+        "intelligence": 5,
+        "speed": 3,
+        "strength": 6
+      }
     }]
   };
 
