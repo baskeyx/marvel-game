@@ -136,7 +136,7 @@ function updateCardHub(charName) {
   html.querySelector(".hub-cards").innerHTML = '<h2>Cards (' + userState.cards.length + ')</h2>' + hubCards;
 
   // temp intro message
-  html.querySelector(".hub-welcome p").innerHTML = "Nice, you've bagged yourself " + charName + "! Why not try out the challenges section? The game is only in Beta but come back soon as you'll be able to earn adamantium coins (the current trending cryptocurrency), trade, or take on friends!";
+  html.querySelector(".hub-welcome p").innerHTML = "Nice, you've bagged yourself " + charName + "! Why not try out the challenges section? The game is only in Beta but more features will be coming soon!";
 }
 
 var domPacks = html.querySelectorAll(".hub-packs .hub-card");
