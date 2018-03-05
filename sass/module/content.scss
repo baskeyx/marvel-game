@@ -17,8 +17,9 @@ h1 {
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 5px;
-  padding: 20px 20px 0 0;
+  padding: 20px 0 0 0;
   font-size: 20px;
+  display:inline-block;
 }
 
 p {
@@ -53,7 +54,7 @@ p {
   text-align: center;
   margin-top: 10px;
   text-transform: uppercase;
-} 
+}
 
 .intro-state {
   .hub-cards,
@@ -93,6 +94,59 @@ p {
   transition: width 1s linear;
 }
 
+.ranking{
+  position: absolute;
+  top: 8px;
+  right: 5px;
+  color: #fff;
+  font-size: 13px;
+    &:after{
+    content: "\e9d9";
+    font-family: 'icomoon';
+    margin-left: 1px;
+    font-size: 11px;
+  }
+}
+
+.stones{
+  list-style-type: none;
+  position: absolute;
+  top: 34px;
+  left: 6px;
+  line-height: 5px;
+  li{
+    display: inline-block;
+    height: 7px;
+    width: 7px;
+    background: white;
+    margin-right: 1px;
+    border: 1px solid #333;
+    border-radius: 100%;
+    &.space-stone{
+      background: #4995c7;
+    }
+    &.mind-stone{
+      background: #f1d04f;
+    }
+    &.reality-stone{
+      background: #c24330;
+    }
+    &.power-stone{
+      background:#6b4c87;
+    }
+    &.soul-stone{
+      background: #f1a142;
+    }
+    &.time-stone{
+      background: #81b380;
+    }
+  }
+}
+
+.villain-wrapper .ranking{
+  display:none;
+}
+
 .fight-wrapper {
   &.points-1 .score {
     width: 66%;
@@ -109,8 +163,8 @@ p {
 
 .instructions {
   text-align: center;
-  margin: 10px;
-  font-size: 10px;
+  margin: 8px;
+  font-size: 14px;
   text-transform: uppercase;
 }
 
@@ -152,6 +206,10 @@ p {
   width: 100%;
   right: 0;
   opacity: 0.8;
+}
+
+.view-wrapper{
+  margin-top:40px;
 }
 
 .hero-wrapper {

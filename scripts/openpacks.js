@@ -40,20 +40,28 @@ for (i = 0; i < hero.heros.length; i++) {
 }
 
 // set the chance of getting each type of card
+var level = 0;
+
 function randomCard() {
   var r = Math.random();
   if (r < 0.5) {
     characters = veryCommon;
+    level = 1;
   } else if (r < 0.75) {
     characters = common;
+    level = 2;
   } else if (r < 0.9) {
     characters = uncommon;
+    level = 3;
   } else if (r < 0.97) {
     characters = limited;
+    level = 4;
   } else if (r < 0.99) {
     characters = rare;
+    level = 5;
   } else {
     characters = ultraRare;
+    level = 6;
   }
   return characters;
 }
@@ -73,6 +81,7 @@ function buildCard(char, wrapper) {
   markup = "<div class='" + wrapper + "-wrapper fight-wrapper'>" +
     "<img src='" + img + "' alt='" + char.name + "'>" +
     "<h2>" + char.name + "</h2>" +
+    "<span class='ranking'>" + level + "</span><span class='star'></span>" +
     "<span class='score'></span>" + markup + "</div>";
   return markup;
 }
@@ -127,7 +136,7 @@ function updateCardHub(charName) {
   html.querySelector(".hub-cards").innerHTML = '<h2>Cards (' + userState.cards.length + ')</h2>' + hubCards;
 
   // temp intro message
-  html.querySelector(".hub-welcome p").innerHTML = "Nice, you've bagged yourself " + charName + "! Why not try out the challenges section? The game is only in Beta but come back soon as you'll be able to earn adamantium coins (the best cryptocurrency) and trade, or take on friends!";
+  html.querySelector(".hub-welcome p").innerHTML = "Nice, you've bagged yourself " + charName + "! Why not try out the challenges section? The game is only in Beta but come back soon as you'll be able to earn adamantium coins (the current trending cryptocurrency), trade, or take on friends!";
 }
 
 var domPacks = html.querySelectorAll(".hub-packs .hub-card");
@@ -142,7 +151,7 @@ for (var k = 0; k < domPacks.length; k++) {
       userState.currency -= 5;
       item = characters[Math.floor(Math.random() * characters.length)];
       fetchJSONFile("https://gateway.marvel.com:443/v1/public/characters/" + item + "?apikey=" + apiKey, function(data) {
-
+        console.log(data);
         var character = data.data.results[0];
         var charName = character.name;
         var charImg = character.thumbnail.path + "." + character.thumbnail.extension;
@@ -163,7 +172,7 @@ for (var k = 0; k < domPacks.length; k++) {
         updateCardHub(charName);
 
         html.querySelector(".hub-cards .hub-card").addEventListener("click", function() {
-          var cardMarkup = buildCard(userState.cards[0], "hero");
+          var cardMarkup = buildCard(userState.cards[0], "view");
           html.querySelector(".overlay").innerHTML = cardMarkup + "<div class='close'>Close</div>";
           html.classList.add("fight");
           window.scrollTo(0, 0);

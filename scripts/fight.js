@@ -358,10 +358,16 @@ function fight() {
       if (t === 6 || pf === 3 || pa === 3) {
         if (pf > pa) {
           instructions(tempHeroFight.name + " wins");
+          userState.currency += 1;
+          html.querySelector(".coins").innerHTML = userState.currency;
+          html.querySelector(".hub-welcome p").innerHTML = "Nice one! You defeated " + tempVillainFight.name;
+
         } else if (pf < pa) {
           instructions(tempVillainFight.name + " wins");
+          html.querySelector(".hub-welcome p").innerHTML = "Oh snap, you just got defeated by " + tempVillainFight.name + ". Why not try another challenge to redeem yourself?";
         } else {
           instructions("it's a tie!");
+          html.querySelector(".hub-welcome p").innerHTML = "Woah, close.. the game with " + tempVillainFight.name + " was a tie. Why not try another challenge?";
         }
         gameProgress = 0;
         setTimeout(function(){

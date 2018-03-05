@@ -64,6 +64,8 @@ gulp.task('move', function (){
   .pipe(gulp.dest('dist/img'));
   gulp.src('css/*')
   .pipe(gulp.dest('dist/css'));
+  gulp.src('fonts/*')
+  .pipe(gulp.dest('dist/fonts'));
 })
 
 gulp.task('build', ['html', 'compress', 'move']);
