@@ -1,5 +1,6 @@
 'use strict';
 
+//
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const concat = require('gulp-concat');
@@ -9,6 +10,26 @@ const rename = require('gulp-rename');
 const maps = require('gulp-sourcemaps');
 const browserSync = require('browser-sync');
 const replace = require('gulp-replace');
+const gutil = require('gulp-util');
+const ftp = require('vinyl-ftp');
+
+// require ftp credentials
+const ftpLogin = require('./ftp-creds.json');
+
+gulp.task('deploy', function(){
+  var conn = ftp.create( {
+      host:     ftpLogin.host,
+      user:     ftpLogin.username,
+      password: ftpLogin.password,
+      parallel: 10,
+      log:      gutil.log
+  } );
+  var globs = [ './dist/**'];
+
+return gulp.src( globs, {base : './dist' , buffer : false })
+      .pipe( conn.newer('/marvel-game'))
+      .pipe( conn.dest('/marvel-game'))
+})
 
 // convert sass into css and create source map
 gulp.task('sass', function () {
@@ -68,7 +89,7 @@ gulp.task('move', function (){
   .pipe(gulp.dest('dist/fonts'));
 })
 
-gulp.task('build', ['html', 'compress', 'move']);
+gulp.task('build', ['sass', 'concat', 'html', 'compress', 'move']);
 
 gulp.task('watch', function(){
 	gulp.watch('sass/**', ['sass']);

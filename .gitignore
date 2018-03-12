@@ -2,3 +2,4 @@ node_modules/
 scripts/apikey.js
 js/
 dist/
+ftp-creds.json

@@ -151,7 +151,6 @@ for (var k = 0; k < domPacks.length; k++) {
       userState.currency -= 5;
       item = characters[Math.floor(Math.random() * characters.length)];
       fetchJSONFile("https://gateway.marvel.com:443/v1/public/characters/" + item + "?apikey=" + apiKey, function(data) {
-        console.log(data);
         var character = data.data.results[0];
         var charName = character.name;
         var charImg = character.thumbnail.path + "." + character.thumbnail.extension;

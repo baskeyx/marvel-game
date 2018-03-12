@@ -128,28 +128,28 @@ function fight() {
         "strength": 6
       }
     },{
-      "name": "Apocalypse",
-      "id": 1009156,
-      "stats": {
-        "durability": 6,
-        "energy": 7,
-        "fighting": 7,
-        "intelligence": 7,
-        "speed": 7,
-        "strength": 7
-      }
-    },{
-      "name": "Thanos",
-      "id": 1009652,
-      "stats": {
-        "durability": 7,
-        "energy": 7,
-        "fighting": 7,
-        "intelligence": 7,
-        "speed": 6,
-        "strength": 7
-      }
-    },{
+    //   "name": "Apocalypse",
+    //   "id": 1009156,
+    //   "stats": {
+    //     "durability": 6,
+    //     "energy": 7,
+    //     "fighting": 7,
+    //     "intelligence": 7,
+    //     "speed": 7,
+    //     "strength": 7
+    //   }
+    // },{
+    //   "name": "Thanos",
+    //   "id": 1009652,
+    //   "stats": {
+    //     "durability": 7,
+    //     "energy": 7,
+    //     "fighting": 7,
+    //     "intelligence": 7,
+    //     "speed": 6,
+    //     "strength": 7
+    //   }
+    // },{
       "name": "Loki",
       "id": 1009407,
       "stats": {
@@ -183,17 +183,17 @@ function fight() {
         "strength": 3
       }
     },{
-      "name": "Dracula",
-      "id": 1010677,
-      "stats": {
-        "durability": 7,
-        "energy": 7,
-        "fighting": 7,
-        "intelligence": 7,
-        "speed": 7,
-        "strength": 7
-      }
-    },{
+    //   "name": "Dracula",
+    //   "id": 1010677,
+    //   "stats": {
+    //     "durability": 7,
+    //     "energy": 7,
+    //     "fighting": 7,
+    //     "intelligence": 7,
+    //     "speed": 7,
+    //     "strength": 7
+    //   }
+    // },{
       "name": "Doctor Doom",
       "id": 1009281,
       "stats": {
@@ -205,17 +205,17 @@ function fight() {
         "strength": 6
       }
     },{
-      "name": "Mephisto",
-      "id": 1009440,
-      "stats": {
-        "durability": 7,
-        "energy": 7,
-        "fighting": 7,
-        "intelligence": 6,
-        "speed": 7,
-        "strength": 7
-      }
-    },{
+    //   "name": "Mephisto",
+    //   "id": 1009440,
+    //   "stats": {
+    //     "durability": 7,
+    //     "energy": 7,
+    //     "fighting": 7,
+    //     "intelligence": 6,
+    //     "speed": 7,
+    //     "strength": 7
+    //   }
+    // },{
       "name": "Moonstone",
       "id": 1010362,
       "stats": {
@@ -258,6 +258,17 @@ function fight() {
         "intelligence": 5,
         "speed": 3,
         "strength": 6
+      }
+    },{
+      "name": "Red Skull",
+      "id": 1009535,
+      "stats": {
+        "durability": 3,
+        "energy": 1,
+        "fighting": 5,
+        "intelligence": 4,
+        "speed": 3,
+        "strength": 3
       }
     }]
   };

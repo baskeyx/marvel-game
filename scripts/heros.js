@@ -640,6 +640,39 @@ function loadHeros() {
           "speed": 7,
           "strength": 7
         }
+      }, {
+        "name": "Bishop",
+        "id": 1009182,
+        "stats": {
+          "durability": 4,
+          "energy": 7,
+          "fighting": 5,
+          "intelligence": 4,
+          "speed": 2,
+          "strength": 3
+        }
+      }, {
+        "name": "Elektra",
+        "id": 1009288,
+        "stats": {
+          "durability": 2,
+          "energy": 1,
+          "fighting": 6,
+          "intelligence": 3,
+          "speed": 3,
+          "strength": 3
+        }
+      }, {
+        "name": "Elektra (Ultimate)",
+        "id": 1010923,
+        "stats": {
+          "durability": 2,
+          "energy": 3,
+          "fighting": 7,
+          "intelligence": 4,
+          "speed": 6,
+          "strength": 4
+        }
       }
     ]
   };
